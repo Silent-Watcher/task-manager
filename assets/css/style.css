@@ -9,9 +9,11 @@ body {
   margin: 0px;
   font-family: "Open Sans";
   font-size: 14px;
-  font-smoothing: antialiased;
 }
-
+a{
+  text-decoration: none;
+  color: #404040;
+}
 .page {
   position: absolute;
   width: 80%;
@@ -266,4 +268,18 @@ body {
 
 .clear {
   clear: both;
+}
+
+.folderList .folder{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.folderList li{
+  display: block;
+  width: 100%;
+}
+.folderList  .trash{
+  color: red;
 }

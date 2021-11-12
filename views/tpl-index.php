@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title><?= SITE_TITLE ; ?></title>
   <link rel="stylesheet" href="<?= BASE_URL;?>/assets/css/style.css">
-
+  <link rel='stylesheet' href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css' integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p' crossorigin='anonymous'/>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -22,11 +22,25 @@
       </div>
       <div class="menu">
         <div class="title">Navigation</div>
-        <ul>
-          <li> <i class="fa fa-home"></i>Home</li>
-          <li><i class="fa fa-signal"></i>Activity</li>
-          <li class="active"> <i class="fa fa-tasks"></i>Manage Tasks</li>
-          <li> <i class="fa fa-envelope"></i>Messages</li>
+        <ul class = "folderList">
+
+        <!-- get folders from the database -->
+        <?php foreach($folders as $key=>$value):?>
+          <a class="folder" href="?folderId = <?=$value->id?>">
+          <li><?=$value->folderName?></li>
+          <a class="trash"href="?deleteFodlerId = <?=$value->id?>"><i class="fas fa-trash"></i></a>
+        </a>
+        <?php endforeach;?>
+        <!-- get folders from the database -->
+
+
+          <!-- <li> <i class="fa fa-folder"></i>Home</li>
+          <li class="active"> <i class="fa fa-tasks"></i>Manage Tasks</li> -->
+
+
+
+
+
         </ul>
       </div>
     </div>
