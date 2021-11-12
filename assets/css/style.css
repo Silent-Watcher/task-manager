@@ -10,7 +10,7 @@ body {
   font-family: "Open Sans";
   font-size: 14px;
 }
-a{
+a {
   text-decoration: none;
   color: #404040;
 }
@@ -62,7 +62,7 @@ a{
   line-height: 40px;
   padding: 0px 20px;
   font-weight: 600;
-  font-size: 1.0em;
+  font-size: 1em;
 }
 .pageHeader .userPanel img {
   float: right;
@@ -116,7 +116,7 @@ a{
 }
 .main .nav .menu .title {
   font-weight: 700;
-  font-size: 1.0em;
+  font-size: 1em;
   text-transform: uppercase;
 }
 .main .nav .menu ul {
@@ -136,10 +136,10 @@ a{
   transition: 0.25s all;
 }
 .main .nav .menu ul li.active {
-  color: #79BC46;
+  color: #79bc46;
 }
 .main .nav .menu ul li:hover {
-  background-color: #999;
+  background-color: #ccccccb2;
 }
 .main .nav .menu ul li i {
   font-size: 1.4em;
@@ -157,14 +157,14 @@ a{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
 }
 .main .view .viewHeader .title {
   float: left;
   font-size: 1.4em;
   font-weight: 400;
   padding: 0px;
-  color: #AAA;
+  color: #aaa;
   margin-top: -18px;
 }
 .main .view .viewHeader .functions {
@@ -174,7 +174,7 @@ a{
   float: right;
   height: 30px;
   line-height: 30px;
-  background-color: #AAA;
+  background-color: #aaa;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -189,9 +189,9 @@ a{
 }
 .main .view .viewHeader .functions .button.inverz {
   background-color: inherit;
-  border: 1px solid #AAA;
+  border: 1px solid #aaa;
   width: 10px;
-  color: #AAA;
+  color: #aaa;
   font-size: 1.3em;
   padding-left: 10px;
   padding-right: 16px;
@@ -221,13 +221,13 @@ a{
   height: 50px;
   line-height: 50px;
   list-style: none;
-  border-top: 1px solid #AAA;
+  border-top: 1px solid #aaa;
 }
 .main .view .content .list ul li.checked {
-  background-color: #F0F4F5;
+  background-color: #f0f4f5;
 }
 .main .view .content .list ul li:last-child {
-  border-bottom: 1px solid #AAA;
+  border-bottom: 1px solid #aaa;
 }
 .main .view .content .list ul li i {
   float: left;
@@ -252,7 +252,7 @@ a{
   width: 100px;
   height: 30px;
   line-height: 30px;
-  background-color: #AAA;
+  background-color: #aaa;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -263,23 +263,46 @@ a{
   font-weight: 700;
 }
 .main .view .content .list ul li .info .button.green {
-  background-color: #85C157;
+  background-color: #85c157;
 }
 
 .clear {
   clear: both;
 }
 
-.folderList .folder{
+.trash {
+  font-size: 12px;
+  color: #fc8383;
+  transition: all 0.4s ease;
+}
+.trash:hover {
+  color: #d62f2f;
+}
+.folderList .folder {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
 }
-.folderList li{
-  display: block;
-  width: 100%;
+.newfolderINP {
+  width: 80%;
+  border: 1px solid #efefef;
+  outline: 0;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
-.folderList  .trash{
-  color: red;
+.addNewFolder {
+  border: 0;
+  outline: 0;
+  color: #85c157;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-size: 17px;
+  padding-right: 23px;
+  background-color: transparent;
+}
+.addNewFolder:hover {
+  color: #578534;
+}
+.makeFolderWrap {
+  display: flex;
 }

@@ -25,23 +25,22 @@
         <ul class = "folderList">
 
         <!-- get folders from the database -->
+        <a href="?FolderId=<?= isset($_GET["folderId"]) ?? null;?>"><li class="active"><i class="fa fa-folder"></i>All</li></a>
         <?php foreach($folders as $key=>$value):?>
-          <a class="folder" href="?folderId = <?=$value->id?>">
-          <li><?=$value->folderName?></li>
-          <a class="trash"href="?deleteFodlerId = <?=$value->id?>"><i class="fas fa-trash"></i></a>
+          <a  href="?folderId=<?=$value->id?>">
+          <li class="folder">
+            <i class="fa fa-folder"></i>
+            <?=$value->folderName;?>
+            <a class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
+          </li>
         </a>
         <?php endforeach;?>
         <!-- get folders from the database -->
-
-
-          <!-- <li> <i class="fa fa-folder"></i>Home</li>
-          <li class="active"> <i class="fa fa-tasks"></i>Manage Tasks</li> -->
-
-
-
-
-
         </ul>
+        <div class="makeFolderWrap" >
+          <input class="newfolderINP" type="text" placeholder="make new folder ...">
+          <button class="addNewFolder"><i class="fas fa-plus"></i></button>
+        </div>
       </div>
     </div>
     <div class="view">
