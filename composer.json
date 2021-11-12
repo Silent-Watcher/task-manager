@@ -1,0 +1,13 @@
+{
+    "name": "ali/task",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ali.t.nazari",
+            "email": "91375198+Silent-Watcher@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

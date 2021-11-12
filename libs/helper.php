@@ -1,0 +1,1 @@
+<?php defined("BASE_PATH") or die("permission denied");
