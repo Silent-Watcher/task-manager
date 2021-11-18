@@ -61,7 +61,8 @@
           <?php if(!empty($tasks)): ?>
           <?php foreach($tasks as $key=>$value):?>
             <li class="<?= ($value->is_done) ? "checked" : null ;?>">
-              <i class="fa <?= ($value->is_done) ? "fa-check-square-o" : "fa-square-o" ;?> taskStat"></i><span><?= $value->taskName;?></span>
+              <a class="taskStat" href="?taskId=<?=$value->id?>"> <i class="fa <?= ($value->is_done) ? "fa-check-square-o" : "fa-square-o" ;?>"></i></a>
+              <span><?= $value->taskName;?></span>
               <div class="info">
                 <span>Created at <?=$value->created_at?></span> 
                 <a onclick="return confirm('Are you sure to delete <?=$value->taskName;?> task ? ')" class="trash"href="?deleteTaskId=<?=$value->id?>"><i class="fas fa-trash"></i></a>

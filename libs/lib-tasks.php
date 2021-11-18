@@ -26,6 +26,7 @@ function getFolders():array{
 function addFolder(string $folderName = null):string{
     global $db;
     global $db;
+    $currentUserId = 1;
     $sql = "INSERT INTO folders (user_id,folderName)  VALUES({$currentUserId},:name);";
     $stmt = $db->prepare($sql);
     $stmt->execute(["name"=>$folderName]);
@@ -68,6 +69,16 @@ function addTask(string $taskName = null , int $folderId = null ):int{
 // add tasks
 
 
+// update task stat
+function updateTask(int $taskId = null){
+    global $db;
+    $sql ="UPDATE tasks set is_done = 1 - is_done where id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute(["id"=>$taskId]);
+}
+// update task stat
+
+
 // get current user tasks
 function getTasks():array{
     global $db;
@@ -80,3 +91,5 @@ function getTasks():array{
     return $result;
 }
 // get current user tasks
+
+
