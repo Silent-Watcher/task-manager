@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title><?= SITE_TITLE ; ?></title>
-  <link rel="stylesheet" href="<?= BASE_URL;?>/assets/css/style.css">
   <link rel='stylesheet' href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css' integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p' crossorigin='anonymous'/>
+  <link rel="stylesheet" href="<?= BASE_URL;?>/assets/css/style.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -25,12 +25,11 @@
         <ul class = "folderList">
 
         <!-- get folders from the database -->
-        <a href="?FolderId=<?= isset($_GET["folderId"]) ?? null;?>"><li class="active"><i class="fa fa-folder"></i>All</li></a>
+        <a href="?FolderId=<?= isset($_GET["folderId"]) ?? null;?>"><li class="<?= isset($_GET["folderId"])? null :"active"?>"><i class="fa fa-folder"></i>All</li></a>
         <?php foreach($folders as $key=>$value):?>
-        <a  href="?folderId=<?=$value->id?>">
-          <li class="folder">
-            <i class="fa fa-folder"></i>
-            <?=$value->folderName;?>
+        <a class=""  href="?folderId=<?=$value->id?>">
+          <li class="folder <?= (isset($_GET["folderId"]) and $value->id == $_GET["folderId"] ) ? "active": null ;?>">
+            <i class="fa fa-folder"> <?=$value->folderName;?></i>
             <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
           </li>
         </a>
@@ -54,32 +53,40 @@
       </div>
       <div class="content">
         <div class="list">
-          <div class="title">Today</div>
-          <ul>
-            <li class="checked"><i class="fa fa-check-square-o"></i><span>Update team page</span>
+          <div class="title">Tasks</div>
+          <ul class="taskList">
+
+
+
+
+          <?php foreach($tasks as $key=>$value):?>
+            <li class="<?= ($value->is_done) ? "checked" : null ;?>">
+              <i class="fa <?= ($value->is_done) ? "fa-check-square-o" : "fa-square-o" ;?> taskStat"></i><span><?= $value->taskName;?></span>
               <div class="info">
-                <div class="button green">In progress</div><span>Complete by 25/04/2014</span>
+                <span>Created at <?=$value->created_at?></span> 
+                <a onclick="return confirm('Are you sure to delete <?=$value->taskName;?> task ? ')" class="trash"href="?deleteTaskId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
               </div>
             </li>
-            <li><i class="fa fa-square-o"></i><span>Design a new logo</span>
+          <?php endforeach; ?>
+          <!-- show tasks -->
+            <!-- <li class="checked">
+              <i class="fa fa-check-square-o taskStat"></i><span>Update team page</span>
               <div class="info">
-                <div class="button">Pending</div><span>Complete by 10/04/2014</span>
+                <span>Created at 25/04/2014</span> 
+                <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
               </div>
             </li>
-            <li><i class="fa fa-square-o"></i><span>Find a front end developer</span>
-              <div class="info"></div>
-            </li>
+            <li>
+              <i class="fa fa-square-o taskStat"></i><span>Design a new logo</span>
+              <div class="info">
+               <span>Created at 10/04/2014</span>
+               <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
+              </div>
+            </li> -->
+          <!-- show tasks -->
+
           </ul>
         </div>
-        <div class="list">
-          <div class="title">Tomorrow</div>
-          <ul>
-            <li><i class="fa fa-square-o"></i><span>Find front end developer</span>
-              <div class="info"></div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </div>

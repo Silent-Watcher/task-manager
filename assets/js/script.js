@@ -11,9 +11,7 @@ $(document).ready(function () {
         $(".folderList").append(
           '<a href="?folderId=' +
             response +
-            '"><li class="folder"><i class="fa fa-folder"></i>' +
-            input.val() +
-            '<a onclick="return confirm(`Are you sure to delete '+input.val()+' folder ?`)" class="trash"href="?deleteFolderId=' +
+            '"><li class="folder"><i class="fa fa-folder"> '+input.val()+'</i><a onclick="return confirm(`Are you sure to delete '+input.val()+' folder ?`)" class="trash"href="?deleteFolderId=' +
             response +
             '"><i class="fas fa-trash"></i></a></li></a>'
         );

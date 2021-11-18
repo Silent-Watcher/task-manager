@@ -135,8 +135,8 @@ a {
   border-radius: 4px;
   transition: 0.25s all;
 }
-.main .nav .menu ul li.active {
-  color: #79bc46;
+.main .nav .menu ul li.active i.fa-folder {
+  color: #79bc46!important;
 }
 .main .nav .menu ul li:hover {
   background-color: #ccccccb2;
@@ -262,9 +262,7 @@ a {
   color: White;
   font-weight: 700;
 }
-.main .view .content .list ul li .info .button.green {
-  background-color: #85c157;
-}
+
 
 .clear {
   clear: both;
@@ -305,4 +303,16 @@ a {
 }
 .makeFolderWrap {
   display: flex;
+}
+
+.taskStat{
+  line-height: 0!important;
+  width: 20px!important;
+  height: 20px!important;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-right: 5px;
 }

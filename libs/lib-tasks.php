@@ -1,5 +1,5 @@
 <?php 
-defined("BASE_PATH") or die("permission denied");
+defined("BASE_PATH") OR die("permission denied");
 
 
 // delete folders
@@ -33,3 +33,18 @@ function addFolder(string $folderName = null):string{
 }
 // make new folder 
 
+
+
+
+// get current user tasks
+function getTasks():array{
+    global $db;
+    $currentUserId = 1;
+    $folderCon = (isset($_GET["folderId"]) and !empty($_GET["folderId"])) ? "and folder_id = {$_GET['folderId']}" : null ;
+    $sql = "SELECT * FROM tasks WHERE user_id = ? {$folderCon} ;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$currentUserId]);
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
+// get current user tasks

@@ -10,5 +10,8 @@ if(isset($_GET["deleteFolderId"]) and is_numeric($_GET["deleteFolderId"])){
 $folders = getFolders();
 // get folders from database
 
-
+// get tasks from database
+$tasks = getTasks();
+// dd($tasks);
+// get tasks from database
 include "views/tpl-index.php"; 
