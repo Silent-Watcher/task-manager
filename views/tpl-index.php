@@ -27,7 +27,7 @@
         <!-- get folders from the database -->
         <a href="?FolderId=<?= isset($_GET["folderId"]) ?? null;?>"><li class="active"><i class="fa fa-folder"></i>All</li></a>
         <?php foreach($folders as $key=>$value):?>
-          <a  href="?folderId=<?=$value->id?>">
+        <a  href="?folderId=<?=$value->id?>">
           <li class="folder">
             <i class="fa fa-folder"></i>
             <?=$value->folderName;?>
