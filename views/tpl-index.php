@@ -22,33 +22,34 @@
       </div>
       <div class="menu">
         <div class="title">Navigation</div>
+        <span class="php-activeFold" style="display:none;" data-activeFolder="<?=$_GET["folderId"];?>"></span>
+        <!-- get folders from the database -->
         <ul class = "folderList">
-
-        <!-- get folders from the database -->
-        <a href="?FolderId=<?= isset($_GET["folderId"]) ?? null;?>"><li class="<?= isset($_GET["folderId"])? null :"active"?>"><i class="fa fa-folder"></i>All</li></a>
-        <?php foreach($folders as $key=>$value):?>
-        <a class=""  href="?folderId=<?=$value->id?>">
-          <li class="folder <?= (isset($_GET["folderId"]) and $value->id == $_GET["folderId"] ) ? "active": null ;?>">
-            <i class="fa fa-folder"> <?=$value->folderName;?></i>
-            <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
-          </li>
-        </a>
-        <?php endforeach;?>
-        <!-- get folders from the database -->
+          <a href="?folderId=<?= null;?>"><li class="<?= (!isset($_GET["folderId"]) || $_GET["folderId"] == null) ? "active":null ;?>"><i class="fa fa-folder"></i>All</li></a>
+          <?php foreach($folders as $key=>$value):?>
+          <a id="folderWrapp"  href="?folderId=<?=$value->id?>">
+            <li class="folder <?= (isset($_GET["folderId"]) and $value->id == $_GET["folderId"] ) ? "active": null ;?>">
+              <i class="fa fa-folder"> <?=$value->folderName;?></i>
+              <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
+            </li>
+          </a>
+          <?php endforeach;?>
         </ul>
+      <!-- get folders from the database -->
+
+        <!-- make new folders -->
         <div class="makeFolderWrap" >
           <input class="newfolderINP" type="text" placeholder="make new folder ...">
           <button class="addNewFolder"><i class="fas fa-plus"></i></button>
         </div>
+        <!-- make new folders -->
+
       </div>
     </div>
     <div class="view">
       <div class="viewHeader">
-        <div class="title">Manage Tasks</div>
+        <input style='display : <?= ($_GET["folderId"] == null) ? "none" :"initial" ;?>' type="text" name="addTask" class="addTaskInp" placeholder="Add new task ...">
         <div class="functions">
-          <div class="button active">Add New Task</div>
-          <div class="button">Completed</div>
-          <div class="button inverz"><i class="fa fa-trash-o"></i></div>
         </div>
       </div>
       <div class="content">
@@ -56,9 +57,8 @@
           <div class="title">Tasks</div>
           <ul class="taskList">
 
-
-
-
+          <!-- show tasks -->
+          <?php if(!empty($tasks)): ?>
           <?php foreach($tasks as $key=>$value):?>
             <li class="<?= ($value->is_done) ? "checked" : null ;?>">
               <i class="fa <?= ($value->is_done) ? "fa-check-square-o" : "fa-square-o" ;?> taskStat"></i><span><?= $value->taskName;?></span>
@@ -68,22 +68,10 @@
               </div>
             </li>
           <?php endforeach; ?>
-          <!-- show tasks -->
-            <!-- <li class="checked">
-              <i class="fa fa-check-square-o taskStat"></i><span>Update team page</span>
-              <div class="info">
-                <span>Created at 25/04/2014</span> 
-                <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
-              </div>
-            </li>
-            <li>
-              <i class="fa fa-square-o taskStat"></i><span>Design a new logo</span>
-              <div class="info">
-               <span>Created at 10/04/2014</span>
-               <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
-              </div>
-            </li> -->
-          <!-- show tasks -->
+          <?php else :?>
+            <li>no task here</li>
+          <?php endif; ?>
+        <!-- show tasks -->
 
           </ul>
         </div>
@@ -91,7 +79,7 @@
   </div>
 </div>
 <!-- partial -->
-<script src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous'></script>
-<script  src="<?= BASE_URL;?>/assets/js/script.js"></script>
 </body>
+<script src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous'></script>
+<script defer src="<?= BASE_URL;?>/assets/js/script.js"></script>
 </html>

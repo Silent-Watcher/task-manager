@@ -25,13 +25,25 @@ function getFolders():array{
 // make new folder 
 function addFolder(string $folderName = null):string{
     global $db;
-    $currentUserId = 1;
+    global $db;
     $sql = "INSERT INTO folders (user_id,folderName)  VALUES({$currentUserId},:name);";
     $stmt = $db->prepare($sql);
     $stmt->execute(["name"=>$folderName]);
     return intval($db->lastInsertId());
 }
 // make new folder 
+
+
+// getTaskInfoWithId
+// function getTaskInfo(int $taskId = null):object{
+//     global $db;
+//     $sql = "SELECT * FROM tasks WHERE id = :id ;";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute(["id"=>$taskId]);
+//     $result = $stmt->fetch(PDO::FETCH_OBJ);
+//     return $result ;
+// }
+// getTaskInfoWithId
 
 
 // delete tasks
@@ -42,6 +54,19 @@ function deleteTask(int $taskId = null){
     $stmt->execute([$taskId]);
 }
 // delete tasks
+
+
+// add tasks
+function addTask(string $taskName = null , int $folderId = null ):int{
+    global $db;
+    $currentUserId = 1;
+    $sql = "INSERT INTO tasks (taskName,folder_id,user_id) VALUES (:TaskName,:folderId,:userId)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute(["TaskName"=> $taskName,"folderId"=> $folderId, "userId"=> $currentUserId]);
+    return intval($db->lastInsertId());
+}
+// add tasks
+
 
 // get current user tasks
 function getTasks():array{

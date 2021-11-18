@@ -3,6 +3,7 @@ $(document).ready(function () {
   var input = $(".newfolderINP");
   // add folder
   addFBtn.click(function () {
+    $(".fa-plus").addClass(" anim");
     $.ajax({
       type: "post",
       url: "process/ajax_handler.php",
@@ -11,18 +12,19 @@ $(document).ready(function () {
         if (response == 0) {
           alert("the folder name should have at least 3 letters!!");
         } else {
-            $(".folderList").append(
-              '<a href="?folderId=' +
-                response +
-                '"><li class="folder"><i class="fa fa-folder"> ' +
-                input.val() +
-                '</i><a onclick="return confirm(`Are you sure to delete ' +
-                input.val() +
-                ' folder ?`)" class="trash"href="?deleteFolderId=' +
-                response +
-                '"><i class="fas fa-trash"></i></a></li></a>'
-            );
+          $(".folderList").append(
+            '<a href="?folderId=' +
+              response +
+              '"><li class="folder"><i class="fa fa-folder"> ' +
+              input.val() +
+              '</i><a onclick="return confirm(`Are you sure to delete ' +
+              input.val() +
+              ' folder ?`)" class="trash"href="?deleteFolderId=' +
+              response +
+              '"><i class="fas fa-trash"></i></a></li></a>'
+          );
         }
+        $(".fa-plus").removeClass(" anim");
       },
       error: (response) => {
         console.log(response);
@@ -30,4 +32,26 @@ $(document).ready(function () {
     });
   });
   // add folder
+
+  // add new tasks
+  $(".addTaskInp").keypress(function (e) {
+    if (e.which === 13) {
+      $.ajax({
+        type: "post",
+        url: "process/ajax_handler.php",
+        data: {
+          action: "addTask",
+          taskName: $(this).val(),
+          folderId: $(".php-activeFold").attr("data-activeFolder"),
+        },
+          success: function (response) {
+            location.reload() 
+        },
+        error: (response) => {
+          console.log(response);
+        },
+      });
+    }
+  });
+  // add new tasks
 });

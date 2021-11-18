@@ -20,11 +20,12 @@ switch ($_POST["action"]) {
         if(strlen($_POST["folderName"]) >=3){
             echo addFolder($_POST["folderName"]);
         }else{
-            echo 0;
-            
+            echo 0; 
         }
         break;
-    
+    case 'addTask':
+        echo addTask($_POST["taskName"] , $_POST["folderId"]);
+        break;
     default:
         echo "invalid action !";
         break;
