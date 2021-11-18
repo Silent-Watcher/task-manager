@@ -13,7 +13,7 @@ $(document).ready(function () {
             response +
             '"><li class="folder"><i class="fa fa-folder"></i>' +
             input.val() +
-            '<a class="trash"href="?deleteFolderId=' +
+            '<a onclick="return confirm(`Are you sure to delete '+input.val()+' folder ?`)" class="trash"href="?deleteFolderId=' +
             response +
             '"><i class="fas fa-trash"></i></a></li></a>'
         );

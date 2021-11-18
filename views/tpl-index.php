@@ -31,7 +31,7 @@
           <li class="folder">
             <i class="fa fa-folder"></i>
             <?=$value->folderName;?>
-            <a class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
+            <a onclick="return confirm('Are you sure to delete <?=$value->folderName;?> folder ? ')" class="trash"href="?deleteFolderId=<?=$value->id?>"><i class="fas fa-trash"></i></a>
           </li>
         </a>
         <?php endforeach;?>
