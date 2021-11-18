@@ -1,10 +1,16 @@
 <?php 
 include "bootstrap/init.php"; 
 
-
+// delete folders
 if(isset($_GET["deleteFolderId"]) and is_numeric($_GET["deleteFolderId"])){
     deleteFolder($_GET["deleteFolderId"]);
 }
+// delete folders
+// delete tasks
+if(isset($_GET["deleteTaskId"]) and is_numeric($_GET["deleteTaskId"])){
+    deleteTask($_GET["deleteTaskId"]);
+}
+// delete tasks
 
 // get folders from database
 $folders = getFolders();

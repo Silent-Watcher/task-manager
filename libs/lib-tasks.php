@@ -34,7 +34,14 @@ function addFolder(string $folderName = null):string{
 // make new folder 
 
 
-
+// delete tasks
+function deleteTask(int $taskId = null){
+    global $db;
+    $sql = "DELETE FROM tasks WHERE id = ? ;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$taskId]);
+}
+// delete tasks
 
 // get current user tasks
 function getTasks():array{
