@@ -17,7 +17,12 @@ if(!isset($_POST["action"]) || empty($_POST["action"])){
 
 switch ($_POST["action"]) {
     case 'addFolder':
-        echo addFolder($_POST["folderName"]);
+        if(strlen($_POST["folderName"]) >=3){
+            echo addFolder($_POST["folderName"]);
+        }else{
+            echo 0;
+            
+        }
         break;
     
     default:
