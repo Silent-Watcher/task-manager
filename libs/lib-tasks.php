@@ -14,7 +14,7 @@ function deleteFolder(int $folderId = null){
 // get current user folders from database
 function getFolders():array{
     global $db;
-    $currentUserId = 1;
+    $currentUserId = getCurrentUserId();
     $sql = "SELECT * FROM folders WHERE user_id = {$currentUserId};";
     $stmt = $db->query($sql);
     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -25,8 +25,7 @@ function getFolders():array{
 // make new folder 
 function addFolder(string $folderName = null):string{
     global $db;
-    global $db;
-    $currentUserId = 1;
+    $currentUserId = getCurrentUserId();
     $sql = "INSERT INTO folders (user_id,folderName)  VALUES({$currentUserId},:name);";
     $stmt = $db->prepare($sql);
     $stmt->execute(["name"=>$folderName]);
@@ -60,7 +59,7 @@ function deleteTask(int $taskId = null){
 // add tasks
 function addTask(string $taskName = null , int $folderId = null ):int{
     global $db;
-    $currentUserId = 1;
+    $currentUserId = getCurrentUserId();
     $sql = "INSERT INTO tasks (taskName,folder_id,user_id) VALUES (:TaskName,:folderId,:userId)";
     $stmt = $db->prepare($sql);
     $stmt->execute(["TaskName"=> $taskName,"folderId"=> $folderId, "userId"=> $currentUserId]);
@@ -82,7 +81,7 @@ function updateTask(int $taskId = null){
 // get current user tasks
 function getTasks():array{
     global $db;
-    $currentUserId = 1;
+    $currentUserId = getCurrentUserId();
     $folderCon = (isset($_GET["folderId"]) and !empty($_GET["folderId"])) ? "and folder_id = {$_GET['folderId']}" : null ;
     $sql = "SELECT * FROM tasks WHERE user_id = ? {$folderCon} ;";
     $stmt = $db->prepare($sql);

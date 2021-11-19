@@ -24,7 +24,11 @@ switch ($_POST["action"]) {
         }
         break;
     case 'addTask':
-        echo addTask($_POST["taskName"] , $_POST["folderId"]);
+        if(strlen($_POST["taskName"]) !== 0){
+            echo addTask($_POST["taskName"] , $_POST["folderId"]);
+        }else{
+            echo 0; 
+        }
         break;
     default:
         echo "invalid action !";
